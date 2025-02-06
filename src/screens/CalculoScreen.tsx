@@ -6,8 +6,8 @@ import { styles } from '../theme/appTheme';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 
 interface Numbers {
-    num1: string; 
-    num2: string;
+    num1: number | string; 
+    num2: number | string;
 }
 
 export const CalculoScreen = () => {
@@ -22,8 +22,8 @@ export const CalculoScreen = () => {
     const [resultado, setResultado] = useState<string>('');  
 
     const handleDivision = () => {
-        const n1 = parseFloat(numbers.num1);
-        const n2 = parseFloat(numbers.num2);
+        const n1 = parseFloat(numbers.num1 as string);
+        const n2 = parseFloat(numbers.num2 as string);
         
         if (!numbers.num1 || !numbers.num2) {
             setResultado('Por favor ingrese ambos números');
