@@ -3,11 +3,14 @@ import { View, Text, Button } from 'react-native'
 import { InputScreen } from '../components/InputScreen'
 import { ButtonScreen } from '../components/ButtonScreen';
 import { styles } from '../theme/appTheme';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
-interface Props extends NativeStackScreenProps<any, any> {};
 
-export const CalculoScreen = ({navigation }: Props) => {
+
+export const CalculoScreen = () => {
+    
+    const navigation = useNavigation();
+
     const [num1, setNum1] = useState('');
     const [num2, setNum2] = useState('');
     const [resultado, setResultado] = useState('');
@@ -33,7 +36,7 @@ export const CalculoScreen = ({navigation }: Props) => {
         <Text style={styles.text1}>Resultado: {resultado}</Text>
        
 
-        <Button  title='Regresar'  onPress={() => navigation.goBack()} />
+        <Button  title='Regresar'  onPress={() => navigation.dispatch(CommonActions.navigate({ name: 'Home' }))}/>
     </View>
   )
 }
